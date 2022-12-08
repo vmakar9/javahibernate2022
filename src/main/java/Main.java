@@ -1,3 +1,4 @@
+import models.Gender;
 import models.Yakuza;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,7 +23,7 @@ public class Main {
         session.save(new Yakuza("Majima","Goro"));
         session.save(new Yakuza("Taiga","Saejima"));
         session.save(new Yakuza("Akiyama"));*/
-
+        session.save(new Yakuza("Haruka","Sawamura", Gender.FEMALE));
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         System.out.println(yakuzaList);

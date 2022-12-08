@@ -24,6 +24,9 @@ public class Yakuza {
             length = 250)
     private String surname;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     public Yakuza(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -31,5 +34,11 @@ public class Yakuza {
 
     public Yakuza(String name) {
         this.name = name;
+    }
+
+    public Yakuza(String name, String surname, Gender gender) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
     }
 }
