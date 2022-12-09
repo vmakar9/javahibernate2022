@@ -17,16 +17,11 @@ public class Expirence {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Yakuza yakuza;
     private String number;
 
     public Expirence(String number) {
         this.number = number;
     }
 
-    public Expirence(Yakuza yakuza, String number) {
-        this.yakuza = yakuza;
-        this.number = number;
-    }
+
 }

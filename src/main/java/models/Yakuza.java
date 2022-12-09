@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +33,14 @@ public class Yakuza {
     @JoinColumn(name="fightstyle_id",referencedColumnName = "id")
     private FightStyle fightStyle;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinTable(
+            name ="yakuza_expierence",
+            joinColumns = @JoinColumn(name ="yakuza_id"),
+            inverseJoinColumns = @JoinColumn(name ="expierence_id")
+    )
+    private List<Expirence> cards;
+
     public Yakuza(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -51,5 +61,13 @@ public class Yakuza {
         this.surname = surname;
         this.gender = gender;
         this.fightStyle = fightStyle;
+    }
+
+    public Yakuza(String name, String surname, Gender gender, FightStyle fightStyle, List<Expirence> cards) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.fightStyle = fightStyle;
+        this.cards = cards;
     }
 }

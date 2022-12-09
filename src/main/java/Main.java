@@ -9,6 +9,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -35,9 +36,8 @@ public class Main {
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         Yakuza yakuza = session.find(Yakuza.class,14);
-        Yakuza majima = new Yakuza("Majima","Goro",Gender.MALE,new FightStyle("Mad Dog"));
-        Expirence expirence = new Expirence(majima, "10");
-        session.save(expirence);
+        Yakuza majima = new Yakuza("Majima","Goro",Gender.MALE,new FightStyle("Mad Dog"), Arrays.asList(new Expirence("10")));
+
         session.save(majima);
 
         session.close();
