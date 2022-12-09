@@ -19,6 +19,7 @@ public class Main {
         Metadata metadata = new MetadataSources(serviceRegistry)
                 .addAnnotatedClass(Yakuza.class)
                 .addAnnotatedClass(FightStyle.class)
+                .addAnnotatedClass(Expirence.class)
                 .getMetadataBuilder()
                 .build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
@@ -35,7 +36,10 @@ public class Main {
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         Yakuza yakuza = session.find(Yakuza.class,14);
         Yakuza majima = new Yakuza("Majima","Goro",Gender.MALE,new FightStyle("Mad Dog"));
-        Expirence expirence = new Expirence("10",majima);
+        Expirence expirence = new Expirence(majima, "10");
+        session.save(expirence);
+        session.save(majima);
+
         session.close();
         sessionFactory.close();
     }

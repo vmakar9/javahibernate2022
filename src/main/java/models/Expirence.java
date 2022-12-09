@@ -25,5 +25,8 @@ public class Expirence {
         this.number = number;
     }
 
-
+    public Expirence(Yakuza yakuza, String number) {
+        this.yakuza = yakuza;
+        this.number = number;
+    }
 }
