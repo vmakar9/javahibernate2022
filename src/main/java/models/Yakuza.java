@@ -27,6 +27,10 @@ public class Yakuza {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fightstyle_id",referencedColumnName = "id")
+    private FightStyle fightStyle;
+
     public Yakuza(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -40,5 +44,12 @@ public class Yakuza {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
+    }
+
+    public Yakuza(String name, String surname, Gender gender, FightStyle fightStyle) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.fightStyle = fightStyle;
     }
 }
