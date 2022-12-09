@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@ToString
+
 @Table(name ="yakuza_table")
 public class Yakuza {
     @Id
@@ -27,7 +27,7 @@ public class Yakuza {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name="fightstyle_id",referencedColumnName = "id")
     private FightStyle fightStyle;
 

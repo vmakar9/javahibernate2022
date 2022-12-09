@@ -29,7 +29,7 @@ public class Main {
         session.save(new Yakuza("Taiga","Saejima"));
         session.save(new Yakuza("Akiyama"));*/
         /*session.save(new Yakuza("Haruka","Sawamura", Gender.FEMALE));*/
-        /*session.save(new Yakuza("Kiryu","Kazuma",Gender.MALE,new FightStyle("Dragon")));*/
+        session.save(new Yakuza("Kiryu","Kazuma",Gender.MALE,new FightStyle("Dragon")));
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         System.out.println(yakuzaList);

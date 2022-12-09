@@ -2,10 +2,7 @@ package models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -19,7 +16,8 @@ public class FightStyle {
     private int id;
 
     private String fightstyle;
-
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "fightStyle")
+    private Yakuza yakuza;
     public FightStyle(String fightstyle) {
         this.fightstyle = fightstyle;
     }
