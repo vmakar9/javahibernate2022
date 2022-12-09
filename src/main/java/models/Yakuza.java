@@ -40,6 +40,13 @@ public class Yakuza {
             inverseJoinColumns = @JoinColumn(name ="expierence_id")
     )
     private List<Expirence> cards;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="yakuza_weapon",
+            joinColumns = @JoinColumn(name = "yakuza_id"),
+            inverseJoinColumns = @JoinColumn(name = "weapon_id")
+    )
+    private List<Weapon> weapons;
 
     public Yakuza(String name, String surname) {
         this.name = name;
@@ -69,5 +76,11 @@ public class Yakuza {
         this.gender = gender;
         this.fightStyle = fightStyle;
         this.cards = cards;
+    }
+
+    public Yakuza(String name, String surname, List<Weapon> weapons) {
+        this.name = name;
+        this.surname = surname;
+        this.weapons = weapons;
     }
 }

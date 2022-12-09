@@ -1,7 +1,4 @@
-import models.Expirence;
-import models.FightStyle;
-import models.Gender;
-import models.Yakuza;
+import models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -21,6 +18,7 @@ public class Main {
                 .addAnnotatedClass(Yakuza.class)
                 .addAnnotatedClass(FightStyle.class)
                 .addAnnotatedClass(Expirence.class)
+                .addAnnotatedClass(Weapon.class)
                 .getMetadataBuilder()
                 .build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
@@ -36,8 +34,7 @@ public class Main {
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         Yakuza yakuza = session.find(Yakuza.class,14);
-        Yakuza majima = new Yakuza("Majima","Goro",Gender.MALE,new FightStyle("Mad Dog"), Arrays.asList(new Expirence("10")));
-
+        Yakuza majima = new Yakuza("Majima","Goro",Arrays.asList(new Weapon("metal bat"),new Weapon("knife")));
         session.save(majima);
 
         session.close();
