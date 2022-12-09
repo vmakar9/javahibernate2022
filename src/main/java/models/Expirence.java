@@ -19,6 +19,14 @@ public class Expirence {
 
     private String number;
 
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinTable(
+                    name ="yakuza_expierence",
+                    joinColumns = @JoinColumn(name ="yakuza_id"),
+                    inverseJoinColumns = @JoinColumn(name ="expierence_id")
+    )
+    private Yakuza yakuza;
+
     public Expirence(String number) {
         this.number = number;
     }
