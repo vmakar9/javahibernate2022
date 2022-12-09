@@ -26,7 +26,7 @@ public class Weapon {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="yakuza_weapon",
-            joinColumns = @JoinColumn(name = "weapon_id"),
+            joinColumns = @JoinColumn(name ="weapon_id"),
             inverseJoinColumns = @JoinColumn(name = "yakuza_id")
     )
     private List<Yakuza> yakuza;

@@ -43,7 +43,7 @@ public class Yakuza {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="yakuza_weapon",
-            joinColumns = @JoinColumn(name = "yakuza_id"),
+            joinColumns = @JoinColumn(name ="yakuza_id"),
             inverseJoinColumns = @JoinColumn(name = "weapon_id")
     )
     private List<Weapon> weapons;

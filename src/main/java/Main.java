@@ -34,7 +34,7 @@ public class Main {
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
         Yakuza yakuza = session.find(Yakuza.class,14);
-        Yakuza majima = new Yakuza("Majima","Goro",Arrays.asList(new Weapon("metal bat"),new Weapon("knife")));
+        Yakuza majima = new Yakuza("Majima","Goro",Arrays.asList(new Weapon("metal bet"),new Weapon("knife")));
         session.save(majima);
 
         session.close();
