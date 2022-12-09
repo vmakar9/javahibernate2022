@@ -1,3 +1,4 @@
+import models.Expirence;
 import models.FightStyle;
 import models.Gender;
 import models.Yakuza;
@@ -24,17 +25,17 @@ public class Main {
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        /*session.save(new Yakuza("Kiryu","Kazuma"));
+        session.save(new Yakuza("Kiryu","Kazuma"));
         session.save(new Yakuza("Majima","Goro"));
         session.save(new Yakuza("Taiga","Saejima"));
-        session.save(new Yakuza("Akiyama"));*/
-        /*session.save(new Yakuza("Haruka","Sawamura", Gender.FEMALE));*/
+        session.save(new Yakuza("Akiyama"));
+        session.save(new Yakuza("Haruka","Sawamura", Gender.FEMALE));
         session.save(new Yakuza("Kiryu","Kazuma",Gender.MALE,new FightStyle("Dragon")));
         session.getTransaction().commit();
         List<Yakuza> yakuzaList= session.createQuery("select y from Yakuza y", Yakuza.class).list();
-        System.out.println(yakuzaList);
         Yakuza yakuza = session.find(Yakuza.class,14);
-        System.out.println(yakuza.getFightStyle());
+        Yakuza majima = new Yakuza("Majima","Goro",Gender.MALE,new FightStyle("Mad Dog"));
+        Expirence expirence = new Expirence("10",majima);
         session.close();
         sessionFactory.close();
     }
